@@ -1,0 +1,48 @@
+﻿@model Pharmacy2uTechTest.ViewModels.CurrencyAuditModel
+@using Pharmacy2uTechTest.ViewModels
+
+@{
+    ViewBag.Title = "Convert";
+}
+
+<h2>Currency Conversion</h2>
+
+
+@using (Html.BeginForm("Submit", "Currency", FormMethod.Post))
+{
+    <div class="form-horizontal">
+
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.ActualAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ActualAmount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ActualAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CurrencyType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.CurrencyType,
+                            new SelectList(Enum.GetValues(typeof(Currency))),
+                            "Select Currency Type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CurrencyType, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Convert" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+    <label>Converted Amount:</label> @TempData["ConvertedAmount"]
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

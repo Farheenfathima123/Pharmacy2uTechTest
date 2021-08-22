@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Pharmacy2uTechTest.ViewModels.CurrencyAuditModel>
+
+@{ 
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Report</h2>
+<table class="table">
+
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.ActualAmount)*@
+            @Html.DisplayName("Actual Amount (GBP)")
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(Model => Model.ConvertedAmount)*@
+            @Html.DisplayName("Converted Amount")
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.CurrencyType)*@
+            @Html.DisplayName("Currency Type")
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(Model => Model.DateAdded)*@
+            @Html.DisplayName("Date")
+        </th>
+    </tr>
+
+        
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(ModelItem => item.ActualAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(ModelItem => item.ConvertedAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(ModelItem => item.CurrencyType)
+            </td>
+            <td>
+                @Html.DisplayFor(ModelItem => item.DateAdded)
+            </td>
+
+        </tr>
+    }
+</table>
+
